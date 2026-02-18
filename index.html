@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Av. del Libertador 7600 | Sion Home</title>
+<title>Avenida del Libertador 7600 | Sion Home</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5;color:#333;}
-header{background:white;padding:15px;text-align:center;border-bottom:1px solid #ddd;}
+body{margin:0;font-family:Arial;background:#f5f5f5;}
+header{background:white;padding:15px;text-align:center;border-bottom:1px solid #eee;}
 header img{height:60px;}
 
-.container{max-width:1000px;margin:auto;background:white;padding:25px;}
+.container{max-width:1000px;margin:auto;background:white;padding:20px;}
 
-h1{margin-bottom:5px;}
 .price{font-size:30px;color:#0f766e;margin:15px 0;}
 
 .features{
@@ -22,63 +21,41 @@ gap:10px;
 margin-bottom:25px;
 }
 
-.card{
-background:#fafafa;
-padding:10px;
-border-radius:8px;
-text-align:center;
-font-weight:bold;
-}
+.card{background:#f1f1f1;padding:10px;border-radius:8px;text-align:center;}
 
-.carousel{
-position:relative;
-overflow:hidden;
-border-radius:10px;
-margin-bottom:20px;
-}
+.carousel{position:relative;}
+.carousel img{width:100%;border-radius:10px;display:none;}
+.carousel img.active{display:block;}
 
-.carousel img{
-width:100%;
-display:none;
-}
-
-.carousel img.active{
-display:block;
-}
-
-button{
+.prev,.next{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
 background:white;
 border:none;
-font-size:20px;
+font-size:24px;
 padding:8px 12px;
 cursor:pointer;
+border-radius:6px;
 }
 
 .prev{left:10px;}
 .next{right:10px;}
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
+.thumbs{display:flex;gap:6px;margin-top:10px;overflow-x:auto;}
+.thumbs img{height:60px;cursor:pointer;opacity:.6;border-radius:6px;}
+.thumbs img.active{opacity:1;outline:2px solid #0f766e;}
 
-.map iframe{
-width:100%;
-height:300px;
-border:0;
-border-radius:10px;
-}
-
-.footer{
-margin-top:40px;
-padding:20px;
-text-align:center;
-background:#0f172a;
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
 color:white;
+padding:14px 18px;
+border-radius:40px;
+text-decoration:none;
+font-weight:bold;
 }
 </style>
 </head>
@@ -92,54 +69,43 @@ color:white;
 <div class="container">
 
 <h1>Avenida del Libertador 7600</h1>
-<div>Nuñez | Capital Federal</div>
-
 <div class="price">USD 499000</div>
 
 <div class="carousel">
+
+<div class="slides">
 <img src="IMG_0128.jpeg" class="active">
 <img src="IMG_0129.jpeg">
 <img src="IMG_0130.jpeg">
-<img src="IMG_0131.jpeg">
 <img src="IMG_0132.jpeg">
 <img src="IMG_0133.jpeg">
 <img src="IMG_0134.jpeg">
 <img src="IMG_0135.jpeg">
 <img src="IMG_0136.jpeg">
-<img src="IMG_0137.jpeg">
-<img src="IMG_0138.jpeg">
 <img src="IMG_0139.jpeg">
 <img src="IMG_0140.jpeg">
-<img src="IMG_0141.jpeg">
 <img src="IMG_0142.jpeg">
 <img src="IMG_0143.jpeg">
-<img src="IMG_0144.jpeg">
 <img src="IMG_0145.jpeg">
 <img src="IMG_0146.jpeg">
 <img src="IMG_0147.jpeg">
-<img src="IMG_0148.jpeg">
 <img src="IMG_0150.jpeg">
 <img src="IMG_0151.jpeg">
 <img src="IMG_0152.jpeg">
 <img src="IMG_0153.jpeg">
 <img src="IMG_0154.jpeg">
-<img src="IMG_0155.jpeg">
 <img src="IMG_0156.jpeg">
-<img src="IMG_0157.jpeg">
 <img src="IMG_0158.jpeg">
-<img src="IMG_0159.jpeg">
 <img src="IMG_0160.jpeg">
 <img src="IMG_0161.jpeg">
 <img src="IMG_0162.jpeg">
-<img src="IMG_0163.jpeg">
 <img src="IMG_0164.jpeg">
-
-<button class="prev" onclick="move(-1)">‹</button>
-<button class="next" onclick="move(1)">›</button>
 </div>
 
 <button class="prev" onclick="move(-1)">‹</button>
 <button class="next" onclick="move(1)">›</button>
+
+<div class="thumbs" id="thumbs"></div>
 </div>
 
 <div class="features">
@@ -154,56 +120,53 @@ color:white;
 
 <h2>Descripción</h2>
 <p>
-Espectacular departamento de 4 ambientes con dependencia en piso 9,
-sobre Av. del Libertador con vista al río.
-Palier privado con dos ascensores.
-Living comedor amplio y luminoso.
+Espectacular departamento de 4 ambientes con dependencia en piso 9, sobre Av. del Libertador con vista al río.
+Palier privado con dos ascensores. Living comedor amplio y luminoso.
 Cocina comedor diario, lavadero independiente y dependencia completa.
 </p>
 
-<div class="grid">
-<div>
-<h3>Ambientes</h3>
-<ul>
-<li>✔ Balcón</li>
-<li>✔ Cocina</li>
-<li>✔ Living comedor</li>
-<li>✔ Patio</li>
-</ul>
-</div>
-
-<div>
-<h3>Adicionales</h3>
-<ul>
-<li>✔ Parrilla</li>
-</ul>
-</div>
-</div>
-
 <h2>Ubicación</h2>
-<div class="map">
 <iframe
-src="https://maps.google.com/maps?q=Av%20del%20Libertador%207600%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed">
+width="100%"
+height="300"
+style="border:0;border-radius:10px"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=Av+del+Libertador+7600+Buenos+Aires&output=embed">
 </iframe>
-</div>
 
 </div>
 
-<div class="footer">
-<strong>Sion Home</strong><br>
-+54 9 11 6975-2943<br>
-siontalgam2@gmail.com
-</div>
+<a class="whatsapp" href="https://wa.me/5491169752943" target="_blank">
+WhatsApp
+</a>
 
 <script>
 let index=0;
-const slides=document.querySelectorAll(".carousel img");
+const slides=document.querySelectorAll(".slides img");
+const thumbsContainer=document.getElementById("thumbs");
+
+slides.forEach((img,i)=>{
+let t=document.createElement("img");
+t.src=img.src;
+t.onclick=()=>{index=i;showSlide(index);}
+thumbsContainer.appendChild(t);
+});
+
+function showSlide(i){
+slides.forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".thumbs img").forEach(t=>t.classList.remove("active"));
+slides[i].classList.add("active");
+document.querySelectorAll(".thumbs img")[i].classList.add("active");
+}
 
 function move(step){
-slides[index].classList.remove("active");
 index=(index+step+slides.length)%slides.length;
-slides[index].classList.add("active");
+showSlide(index);
 }
+
+setInterval(()=>{move(1)},4000);
+showSlide(0);
 </script>
 
 </body>
