@@ -1,31 +1,55 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avenida del Libertador 7600 | Sion Home</title>
+<title>Av. del Libertador 7600 | Sion Home</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5;}
-header{background:white;padding:15px;text-align:center;border-bottom:1px solid #eee;}
-header img{height:60px;}
-
-.container{max-width:1000px;margin:auto;background:white;padding:20px;}
-
-.price{font-size:30px;color:#0f766e;margin:15px 0;}
-
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-margin-bottom:25px;
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f5f5;
 }
 
-.card{background:#f1f1f1;padding:10px;border-radius:8px;text-align:center;}
+header{
+background:white;
+padding:15px;
+text-align:center;
+box-shadow:0 2px 6px rgba(0,0,0,.1);
+font-weight:bold;
+font-size:20px;
+}
 
-.carousel{position:relative;}
-.carousel img{width:100%;border-radius:10px;display:none;}
-.carousel img.active{display:block;}
+.container{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:20px;
+}
+
+.price{
+font-size:32px;
+color:#0f766e;
+margin:10px 0;
+}
+
+.carousel{
+position:relative;
+overflow:hidden;
+border-radius:12px;
+}
+
+.slides{
+display:flex;
+transition:transform .4s ease;
+}
+
+.slides img{
+width:100%;
+flex-shrink:0;
+}
 
 .prev,.next{
 position:absolute;
@@ -33,18 +57,52 @@ top:50%;
 transform:translateY(-50%);
 background:white;
 border:none;
-font-size:24px;
+font-size:26px;
 padding:8px 12px;
 cursor:pointer;
-border-radius:6px;
+border-radius:8px;
 }
 
 .prev{left:10px;}
 .next{right:10px;}
 
-.thumbs{display:flex;gap:6px;margin-top:10px;overflow-x:auto;}
-.thumbs img{height:60px;cursor:pointer;opacity:.6;border-radius:6px;}
-.thumbs img.active{opacity:1;outline:2px solid #0f766e;}
+.thumbs{
+display:flex;
+gap:6px;
+margin-top:10px;
+overflow-x:auto;
+}
+
+.thumbs img{
+height:60px;
+border-radius:6px;
+cursor:pointer;
+opacity:.6;
+}
+
+.thumbs img.active{
+opacity:1;
+outline:2px solid #0f766e;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+margin-top:20px;
+}
+
+.card{
+background:#f1f1f1;
+padding:12px;
+border-radius:8px;
+text-align:center;
+}
+
+.desc{
+margin-top:25px;
+line-height:1.5;
+}
 
 .whatsapp{
 position:fixed;
@@ -53,9 +111,10 @@ right:20px;
 background:#25D366;
 color:white;
 padding:14px 18px;
-border-radius:40px;
+border-radius:30px;
 text-decoration:none;
 font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 </style>
 </head>
@@ -63,18 +122,17 @@ font-weight:bold;
 <body>
 
 <header>
-<img src="logo.png">
+Sion Home — Av. del Libertador 7600
 </header>
 
 <div class="container">
 
-<h1>Avenida del Libertador 7600</h1>
 <div class="price">USD 499000</div>
 
 <div class="carousel">
+<div class="slides" id="slides">
 
-<div class="slides">
-<img src="IMG_0128.jpeg" class="active">
+<img src="IMG_0128.jpeg">
 <img src="IMG_0129.jpeg">
 <img src="IMG_0130.jpeg">
 <img src="IMG_0132.jpeg">
@@ -100,13 +158,14 @@ font-weight:bold;
 <img src="IMG_0161.jpeg">
 <img src="IMG_0162.jpeg">
 <img src="IMG_0164.jpeg">
+
 </div>
 
 <button class="prev" onclick="move(-1)">‹</button>
 <button class="next" onclick="move(1)">›</button>
+</div>
 
 <div class="thumbs" id="thumbs"></div>
-</div>
 
 <div class="features">
 <div class="card">178 m² cubierta</div>
@@ -118,22 +177,14 @@ font-weight:bold;
 <div class="card">32 años</div>
 </div>
 
+<div class="desc">
 <h2>Descripción</h2>
-<p>
-Espectacular departamento de 4 ambientes con dependencia en piso 9, sobre Av. del Libertador con vista al río.
-Palier privado con dos ascensores. Living comedor amplio y luminoso.
+Espectacular departamento de 4 ambientes con dependencia en piso 9,
+sobre Av. del Libertador con vista al río.
+Palier privado con dos ascensores.
+Living comedor amplio y luminoso.
 Cocina comedor diario, lavadero independiente y dependencia completa.
-</p>
-
-<h2>Ubicación</h2>
-<iframe
-width="100%"
-height="300"
-style="border:0;border-radius:10px"
-loading="lazy"
-allowfullscreen
-src="https://www.google.com/maps?q=Av+del+Libertador+7600+Buenos+Aires&output=embed">
-</iframe>
+</div>
 
 </div>
 
@@ -143,30 +194,31 @@ WhatsApp
 
 <script>
 let index=0;
-const slides=document.querySelectorAll(".slides img");
-const thumbsContainer=document.getElementById("thumbs");
+const slides=document.getElementById("slides");
+const images=slides.querySelectorAll("img");
+const thumbs=document.getElementById("thumbs");
 
-slides.forEach((img,i)=>{
+images.forEach((img,i)=>{
 let t=document.createElement("img");
 t.src=img.src;
-t.onclick=()=>{index=i;showSlide(index);}
-thumbsContainer.appendChild(t);
+t.onclick=()=>{index=i;update();}
+thumbs.appendChild(t);
 });
 
-function showSlide(i){
-slides.forEach(s=>s.classList.remove("active"));
-document.querySelectorAll(".thumbs img").forEach(t=>t.classList.remove("active"));
-slides[i].classList.add("active");
-document.querySelectorAll(".thumbs img")[i].classList.add("active");
+function update(){
+slides.style.transform="translateX(-"+(index*100)+"%)";
+document.querySelectorAll(".thumbs img")
+.forEach(t=>t.classList.remove("active"));
+document.querySelectorAll(".thumbs img")[index]
+.classList.add("active");
 }
 
 function move(step){
-index=(index+step+slides.length)%slides.length;
-showSlide(index);
+index=(index+step+images.length)%images.length;
+update();
 }
 
-setInterval(()=>{move(1)},4000);
-showSlide(0);
+update();
 </script>
 
 </body>
